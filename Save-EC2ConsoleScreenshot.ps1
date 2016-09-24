@@ -2,13 +2,13 @@
 .Synopsis
    Saves the console screenshot of an Amazon EC2 instance. Requries an existing connection to AWS.
 .DESCRIPTION
-   This function retrieves the Amazon EC2 instance screenshot data, convert it back to bytes and saves it as jpg. 
+   This function retrieves the Amazon EC2 instance screenshot data, convert it back to bytes and saves it as jpeg. 
    By default, it won't overwrite the existing file but you can use the -overwrite switch to change the behaviour.
-   The file path should end with .jpg.
+   The file path should end with .jpeg.
 .EXAMPLE
    Saving the EC2 instance screenshot.
 
-   PS C:\Windows\system32> Save-EC2ConsoleScreenshot -instance 'i-77777777777777777' -filepath 'c:\temp\screenshot.jpg' -overwrite -Verbose
+   PS C:\Windows\system32> Save-EC2ConsoleScreenshot -instance 'i-77777777777777777' -filepath 'c:\temp\screenshot.jpeg' -overwrite -Verbose
    VERBOSE: File already exists. Removing.
    VERBOSE: Image saved
 #>
