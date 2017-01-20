@@ -3,16 +3,14 @@
 
     Param(
         [Parameter (Mandatory=$true,
-           ValueFromPipeline=$true)]
+            ValueFromPipeline=$true)]
         [ValidateNotNullOrEmpty()]
         [String[]]$ComputerName
-    
     )
 
     Begin{
-        }
+    }
     Process{
-    
         Foreach ($c in $ComputerName){
             Try{
                 $AllOK = $true
@@ -32,12 +30,12 @@
                 $AllOK = $false
 
                 $prop = @{'Computer'=$c;
-                            'LoggedOnUser'='N/A'
-                   }
+                    'LoggedOnUser'='N/A'
+                }
 
-                   write-verbose -message "Problem with fetching logged on user info."
-                   $obj = New-Object -TypeName PSObject -Property $prop
-                   Write-Output $obj
+                write-verbose -message "Problem with fetching logged on user info."
+                $obj = New-Object -TypeName PSObject -Property $prop
+                Write-Output $obj
 
             }
             Finally{
@@ -45,20 +43,15 @@
 
             if ($AllOK){
                    
-                   $prop = @{'Computer'=$c;
-                            'LoggedOnUser'=$user
-                   }
+                $prop = @{'Computer'=$c;
+                    'LoggedOnUser'=$user
+                }
 
-                   $obj = New-Object -TypeName PSObject -Property $prop
-                   Write-Output $obj
+                $obj = New-Object -TypeName PSObject -Property $prop
+                Write-Output $obj
             }
-
-
         }
-    
-    
     }
     End{
     }
-
 }
