@@ -17,13 +17,13 @@ Function Save-EC2ConsoleScreenshot{
     [cmdletbinding()]
     param(
         [parameter(Mandatory=$true,
-                   ValueFromPipeline = $true,
-                   Position=0)]
+            ValueFromPipeline = $true,
+            Position=0)]
         [ValidateNotNullOrEmpty()]
         [string]$instance,
         
         [parameter(Mandatory=$true,
-                   Position=1)]
+            Position=1)]
         [ValidateNotNullOrEmpty()]
         [string]$filepath,
 
@@ -55,7 +55,7 @@ Function Save-EC2ConsoleScreenshot{
          
             [io.file]::WriteAllBytes($filepath,$byte)
             Write-Verbose -Message 'Image saved'
-          }
+        }
         catch{
             Write-Warning 'Error gettting screenshot or saving file.'
         }
