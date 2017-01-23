@@ -1,0 +1,1 @@
+Set-ScreenResolution -Width 3840 -Height 2160

@@ -45,7 +45,7 @@ Function Save-EC2ConsoleScreenshot{
             if (test-path -Path $filepath){
                 if ($overwrite){
                     Write-Verbose -Message 'File already exists. Removing.'
-                    del $filepath
+                    Remove-Item $filepath
                 }
                 else{
                     Write-Verbose -Message 'File already exists. Existing and no change was made. Consider using -overwrite.'
