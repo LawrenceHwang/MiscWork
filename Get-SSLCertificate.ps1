@@ -1,15 +1,19 @@
 function Get-SSLCertificate{
     [CmdletBinding()]
     param(
-            [parameter(Mandatory,ValueFromPipeline)]
+            [parameter(Mandatory=$true,
+                        ValueFromPipeline)]
             [string[]]$URI,
-        
             [int]$TCPPort=443,
-        
             [int]$Timeoutms=4000
     )
 
-    begin{}
+    begin{
+        if ($URI -match '^https://'){
+            $URI = $URI -replace ('https://','')
+          }
+          Write-Verbose "Parsed URI is $URI"
+    }
 
     process {
         foreach ($U in $URI) {
@@ -19,12 +23,12 @@ function Get-SSLCertificate{
             $req = [Net.HttpWebRequest]::Create("https://$U`:$port")
             write-verbose "Trying"
             $req.Timeout = $Timeoutms
-            
+
             try {
-                
+
                 $req.GetResponse() | Out-Null
             }
-            
+
             catch {
                 if (!($req.ServicePoint.Certificate)) {
                     Write-Verbose "Couldn't connect to $U on port $port"
@@ -33,14 +37,14 @@ function Get-SSLCertificate{
                 }
                 else{
                     # Cert still received.
-                
-                }             
+
+                }
             }
-            
+
             if (!($req.ServicePoint.Certificate)) {
                 write-error "No Certificate returned on $U"
             }
-            
+
             $certinfo = $req.ServicePoint.Certificate
             Write-Verbose "$certinfo"
 
