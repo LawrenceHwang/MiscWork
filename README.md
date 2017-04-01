@@ -1,2 +1,2 @@
 # MiscWork
-This place contains small works that I have worked on.
+This is the place where seeds of ideas sprouts. =)
