@@ -1,2 +1,2 @@
 # MiscWork
-This is the place where seeds of ideas sprouts. =)
+This is the place where seeds of ideas sprout. =)
