@@ -1,15 +1,15 @@
 function Get-ReversedString {
-  [CmdletBinding()]
-  param (
-    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
-    [ValidateNotNull()]
-    [string]$String
-  )
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [ValidateNotNull()]
+        [string]$String
+    )
 
-  $CharArray = $String.ToCharArray()
+    $CharArray = $String.ToCharArray()
 
-  #region PowerShell way
-  <#
+    #region PowerShell way
+    <#
   $Result = @()
 
   for ($i = $CharArray.count-1; $i -ge 0 ; $i--){
@@ -17,10 +17,10 @@ function Get-ReversedString {
   }
   $Result -join ''
   #>
-  #endregion PowerShell way
+    #endregion PowerShell way
 
-  #region .Net way
-  [array]::Reverse($CharArray)
-  -join $CharArray
-  #endregion .Net way
+    #region .Net way
+    [array]::Reverse($CharArray)
+    -join $CharArray
+    #endregion .Net way
 }
