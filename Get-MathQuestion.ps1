@@ -3,7 +3,7 @@
    A Powershell function to generate elementary school level (grade 1 - grade 3) math addition and substraction quesitons.
 .DESCRIPTION
    This PowerShell function generate random math questions.
-   I write this function so I can easier get some questions to work with my kids.    
+   I write this function so I can easier get some questions to work with my kids.
 .EXAMPLE
 This example gets default 10 easy questions.
 
@@ -63,10 +63,10 @@ function Get-MathQuestion {
     param(
         [ValidateRange(1, 100)]
         [int]$NumberOfQuestion = 10,
-        
+
         [ValidateSet('easy', 'medium', 'hard')]
-        [string]$Diffuculty = 'easy', 
-        
+        [string]$Diffuculty = 'easy',
+
         [switch]$ShowAnswer
     )
 
@@ -106,15 +106,14 @@ function Get-MathQuestion {
             }
             '+' {
                 $answer = $numberA + $numberB
-            } 
+            }
         }
         if ($ShowAnswer) {
             # Well... use only when needed. Find the answers together with kids is fun.
-            write-output "$numberA $operater $numberB = __________                  Answer: $answer"
-        }
-        else {
+            Write-Output "$numberA $operater $numberB = __________                  Answer: $answer"
+        } else {
             # I am doing text output because I plan to print this as worksheet and let kids write the questions.
-            write-output "$numberA $operater $numberB = __________ "
+            Write-Output "$numberA $operater $numberB = __________ "
         }
     }
 }
